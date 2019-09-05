@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html{
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+}
+
+header h1 {
+  text-align: center;
+}
+
+main {
+  background-color: #0048ba;
+  height: 50vh;
+  width: 50vw;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+/* .container {
+  display: flex;
+} */
+
+.container button {
+  margin: 0 auto;
+}
+
+fieldset {
+  border: 0;
+}
+
+.correct-answer-image {
+  height: 200px;
+  width: 200px;
+}
+
+.incorrect-answer-image {
+  height: 200px;
+  width: 200px;
+}
