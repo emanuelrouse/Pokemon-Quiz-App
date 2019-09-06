@@ -9,7 +9,7 @@ const STORE = {
     },
     {
       title: "How many badges did Ash need to enter the pokemon league?",
-      answers: ["4", "6", "2", "8"],
+      answers: ["Four badges", "Six badges", "Two badges", "Eight badges"],
       correctAnswer: 3
     },
     {
@@ -95,7 +95,7 @@ function generateQuestionView() {
       <input type="radio" id="answer-3" name="answer" value="3">
       <label for="answer-3">${answers[3]}</label>
     </fieldset>
-    <button type="submit">Submit</button>
+    <button class="submit-answer-button"type="submit">Submit</button>
 </form>
 `
 }
@@ -113,12 +113,14 @@ function generateCorrectView() {
 }
 
 function generateInCorrectView() {
-  console.log(STORE.questions[STORE.questionNumber].answers[STORE.questions.correctAnswer]);
+  const correctAnswer = STORE.questions[STORE.questionNumber].answers[STORE.questions[STORE.questionNumber].correctAnswer];
+
+  console.log(correctAnswer);
   return `
   <p>Incorrect!</p>
   <p>You got ${STORE.score} of ${STORE.questions.length}</p>
   <img class="incorrect-answer-image" src="./assets/jessie-kicking-magikarp.jpg" alt="pikachu-electric-attack">
-  <p>The correct answer is: ${STORE.questions[STORE.questionNumber].answers[STORE.questions[STORE.questionNumber].correctAnswer]}</p>
+  <p>The correct answer is: ${correctAnswer}</p>
   <button class="next-question js-next-question" type="submit">Next Question</button>
   `;
 }
@@ -126,8 +128,8 @@ function generateInCorrectView() {
 function generateEndOFQuiz() {
   return `
   <p>End of Quiz</p>
-  <p>You got ${STORE.score} of ${STORE.questions.length} correct</p>
-  <p>Score: ${STORE.score}  out of ${STORE.questions.length}</p>
+  <p>You got ${STORE.score} of ${STORE.questions.length} quesitons correct!</p>
+  <p>Score: ${STORE.score} </p>
   <button class="end-of-quiz js-end-of-quiz"type="submit">Restart quiz</button>`
 }
 
