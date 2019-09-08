@@ -38,10 +38,21 @@ p {
 }
 
 .container fieldset {
-  text-align: center;
+  /* text-align: center; */
   border: 0;
+  /* border: 1px solid black; */
 } 
 
+.answers {
+  width: 95%;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+}
+
+label {
+  display: block;
+  /* border: 1px solid black; */
+}
 
 .container .submit-answer-button, .next-question {
   display: block;

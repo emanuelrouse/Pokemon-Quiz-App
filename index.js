@@ -78,22 +78,33 @@ function generateQuestionView() {
   return `
   <p>Question: ${questionNumber + 1} of ${questions.length}</p>
   <p>Score: ${STORE.score}</p>
-  <br>
+  
   <form class="question-form js-question-form">
     <fieldset>
       <legend class="question">${questions[questionNumber].title}</legend>
-      <br>
-      <input type="radio" id="answer-0" name="answer" value="0" checked>
-      <label for="answer-0">${answers[0]}</label>
-      <br>
+      <div class="answers">
+        <label for="answer-0">
+          <input type="radio" id="answer-0" name="answer" value="0" checked>
+          ${answers[0]}
+        </label>
+      
+      
+      <label for="answer-1">
       <input type="radio" id="answer-1" name="answer" value="1">
-      <label for="answer-1">${answers[1]}</label>
-      <br>
+      ${answers[1]}
+      </label>
+     
+      
+      <label for="answer-2">
       <input type="radio" id="answer-2" name="answer" value="2">
-      <label for="answer-2">${answers[2]}</label>
-      <br>
+      ${answers[2]}
+      </label>
+    
+      
+      <label for="answer-3">
       <input type="radio" id="answer-3" name="answer" value="3">
-      <label for="answer-3">${answers[3]}</label>
+      ${answers[3]}</label>
+      </div>
     </fieldset>
     <button class="submit-answer-button"type="submit">Submit</button>
 </form>
