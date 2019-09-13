@@ -22,7 +22,6 @@ main {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 50vh;
-  width: 50vw;
   margin: 0 auto;
   color: #002627;
   font-weight: 700;
@@ -88,6 +87,7 @@ input {
   @media only screen and (min-width: 640px) {
     main {
       background-size: cover;
+      width: 50vw;
     }
     .correct-answer-image {
       height: 200px;
