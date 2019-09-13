@@ -136,7 +136,6 @@ function generateEndOFQuiz() {
 // Event Listeners
 // won't need to use event delegation on this form because this will be on the page when it loads
 function handleStartQuiz() {
-  console.log("handleStartQuiz ran");
   $("button").on("click", function(event) {
     event.preventDefault();
     $(".container").html(generateQuestionView(STORE));
