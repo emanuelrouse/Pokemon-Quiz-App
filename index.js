@@ -1,5 +1,5 @@
 'use strict';
-console.log("Code begins");
+
 const STORE = {
   questions: [
     {
@@ -56,21 +56,8 @@ const STORE = {
   questionNumber: 0,
   score: 0
 };
-/* 
-  User Stories 
-  A user should...
-  Click a start button to start the quiz
-  Not be able to skip questions
-  Answer a series of 5 or more multiple choice questions
-  See which question they're on (e.g., "7 out of 10")
-  See their current score (e.g., "5 correct, 2 incorrect")
-  Receive feedback and, if incorrect, see the correct answer.
-  Move to the next question by clicking a button
-  See overall score at the end of the quiz
-  Be able to start a new quiz
-*/
 
-// Template generators
+// Responsible for generating the html for the question view page
 function generateQuestionView() { 
   let questions = STORE.questions;
   let questionNumber = STORE.questionNumber;
@@ -111,31 +98,33 @@ function generateQuestionView() {
 `
 }
 
+// the html for the correct view screen
 function generateCorrectView() {
   return `
   <div class="correct-view js-correct-view">
   <p>Correct!</p>
   <p>You got ${STORE.score} of ${STORE.questions.length}</p>
-  <img class="correct-answer-image"src="./assets/pikachu-electric.png" alt="pikachu-electric-attack">
+  <img class="correct-answer-image"src="./images/pikachu-electric.png" alt="pikachu">
   <br>
   <button class="next-question js-next-question" type="submit">Next Question</button>
 </div>
 `;
 }
 
+// the html for the incorrect view screen
 function generateInCorrectView() {
   const correctAnswer = STORE.questions[STORE.questionNumber].answers[STORE.questions[STORE.questionNumber].correctAnswer];
 
-  console.log(correctAnswer);
   return `
   <p>Incorrect!</p>
   <p>You got ${STORE.score} of ${STORE.questions.length}</p>
-  <img class="incorrect-answer-image" src="./assets/jessie-kicking-magikarp.jpg" alt="pikachu-electric-attack">
+  <img class="incorrect-answer-image" src="./images/jessie-kicking-magikarp.jpg" alt="jessie-angry">
   <p>The correct answer is: ${correctAnswer}</p>
   <button class="next-question js-next-question" type="submit">Next Question</button>
   `;
 }
 
+// the html for the end of the quiz screen
 function generateEndOFQuiz() {
   return `
   <p>End of Quiz</p>
@@ -148,9 +137,8 @@ function generateEndOFQuiz() {
 // won't need to use event delegation on this form because this will be on the page when it loads
 function handleStartQuiz() {
   console.log("handleStartQuiz ran");
-  $(".container button").on("click", function(event) {
+  $("button").on("click", function(event) {
     event.preventDefault();
-    console.log("Start button clicked");
     $(".container").html(generateQuestionView(STORE));
   });
 }
@@ -159,14 +147,12 @@ function handleStartQuiz() {
 function handleSubmitButton() {
   $(".container").on("submit", ".js-question-form", function(event) {
     event.preventDefault();
-    console.log("question form submitted");
     checkAnswer();
   })
 }
 
 function handleNextQuestion() {
   $(".container").on("click", ".js-next-question", function(event) {
-    console.log("next question clicked");
     if (STORE.questionNumber !== STORE.questions.length){
     $(".container").html(generateQuestionView(STORE));
     } else {
@@ -191,17 +177,13 @@ function checkAnswer() {
       const userSelectedAnswer = $("form input[type='radio']:checked").val();
       // turned user input value into an integer.
       const userAnswerInt = parseInt(userSelectedAnswer);
-      console.log(userAnswerInt);
-      console.log(STORE.questions[STORE.questionNumber].correctAnswer);
       // if correct call correct view 
       // otherwise call incorrect view
       if (userAnswerInt === STORE.questions[STORE.questionNumber].correctAnswer) {
-        console.log("correct!");
         STORE.score++;
         const correct = generateCorrectView();
         $(".container").html(correct);
       } else {
-        console.log("incorrect!")
         const incorrect = generateInCorrectView();
         $(".container").html(incorrect);
       }
@@ -211,7 +193,6 @@ function checkAnswer() {
 
 function main() {
   // document ready function
-  console.log("main ran");
   handleStartQuiz();
   handleSubmitButton();
   handleNextQuestion();
@@ -220,15 +201,4 @@ function main() {
 
 
 $(main);
-
-
-console.log("Code ends");
-
-/* 
-for every ansnwer genreate a new input with the id 
-answers.map((answer, i) => {
-  <input name="blah" value="answer[i]"></input>
-})
-*/
-
 

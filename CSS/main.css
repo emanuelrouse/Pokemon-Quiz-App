@@ -6,23 +6,26 @@
 
 body, html{
   height: 100%;
-  width: 100%;
-  background-color: grey;
-  
+  background: url("../images/steel-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header h1 {
+  color: #e8e8e8;
   text-align: center;
   margin-bottom: 5%;
 }
 
 main {
-  background-color: #0048ba;
+  background-image: url("../images/smilining-pikachu.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   height: 50vh;
   width: 50vw;
   margin: 0 auto;
-  border: 1px solid black;
-  color: #E0FFFF;
+  color: #002627;
+  font-weight: 700;
 }
 
 .container {
@@ -37,21 +40,22 @@ p {
   line-height: 1.5;
 }
 
+legend {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .container fieldset {
-  /* text-align: center; */
   border: 0;
-  /* border: 1px solid black; */
 } 
 
 .answers {
   width: 95%;
-  margin: 0 auto;
-  /* border: 1px solid red; */
+  margin: 0 auto 10px;
 }
 
 label {
   display: block;
-  /* border: 1px solid black; */
 }
 
 .container .submit-answer-button, .next-question {
@@ -65,11 +69,32 @@ input {
 
 
 .correct-answer-image {
-  height: 200px;
-  width: 200px;
+  display: block;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+  
 }
 
 .incorrect-answer-image {
-  height: 200px;
-  width: 200px;
+  display: block;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
 }
+
+
+  /* Media querie syntax for screen size higher that 640 */
+  @media only screen and (min-width: 640px) {
+    main {
+      background-size: cover;
+    }
+    .correct-answer-image {
+      height: 200px;
+      width: 200px;
+    }
+    .incorrect-answer-image {
+      height: 200px;
+      width: 200px;
+    }
+  }
